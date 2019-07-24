@@ -1,0 +1,4 @@
+set -x 
+sudo systemctl stop apache2
+sudo rm /var/log/apache2/*
+sudo systemctl start apache2

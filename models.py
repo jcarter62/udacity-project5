@@ -30,7 +30,7 @@ import os
 # DBName = 'sqlite:///' + db_path
 # # SQLite database path
 
-DBName = 'postgresql://appuser:apppass@localhost/catalog'
+DBName = 'postgresql://appuser:supersecret@localhost/catalog'
 
 class User(Base):
     __tablename__ = 'users'

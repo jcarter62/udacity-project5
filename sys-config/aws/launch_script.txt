@@ -1,6 +1,6 @@
-apt-get -qqy update
+sudo apt-get -qqy update
 
-apt-get -qqy install make zip unzip postgresql apache2
+sudo apt-get -qqy install make zip unzip postgresql apache2
 
 apt-get -qqy install python python-pip
 apt-get purge python-pip
