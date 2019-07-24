@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ data.title }}</title>
+    {% include 'includes.html' %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+{% include 'top.html' %}
+<div>&nbsp;</div>
+<div class="container">
+    <div class="row table-light">
+        <div class="col-1"></div>
+        <div class="col-10">
+
+            <div class="row"><strong>{{ data.title }}</strong></div>
+            <div class="row">
+                {{ data.message }}
+            </div>
+            <div class="row">
+                <div class="btn btn-primary" href="/">home</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

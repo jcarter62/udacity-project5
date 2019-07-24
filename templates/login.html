@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ data.title }}</title>
+    {% include 'includes.html' %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id"
+          content="{{ data.client_id }}">
+    <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
+</head>
+<body>
+{% include 'top.html' %}
+<div>&nbsp;</div>
+<div class="container">
+    <div class="row table-light">
+        <div class="col-1">
+        </div>
+        <div class="col-7">
+            <form action="login" method="post">
+
+                <div>&nbsp;</div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="row p-1 font-weight-bolder themed-grid-col">Username:</div>
+                    </div>
+                    <div class="col-10">
+                        <input type="text" name="user_name" value="{{ data.user_name }}"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <div class="row p-1 font-weight-bolder themed-grid-col">Password:</div>
+                    </div>
+                    <div class="col-10">
+                        <input type="password" name="user_password" value="{{ data.user_password }}"/>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-2">
+                        <button class="btn btn-primary" role="button" type="submit">Login</button>
+                    </div>
+                    <div class="col-10">
+                        {{ data.message }}
+                    </div>
+                    {#                    <div class="col-3 g-signin2" data-longtitle="true" data-theme="dark" id="signinButton"></div>#}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>&nbsp;</div>
+<div class="container">
+    <form action="login/create" method="get">
+    <div class="row">
+        <div class="row">
+            <div class="g-signin2" data-longtitle="true" data-theme="dark" id="signinButton"></div>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <button class="btn btn-primary" role="button" type="submit">Create Account</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+{% include 'footer.html' %}
+<!--NEW GOOGLE SIGN IN CODE -->
+</body>
+<script type="application/javascript">
+
+    var auth2;
+
+    function init() {
+        gapi.load('auth2', function () {
+            console.log("loaded auth2");
+            auth2 = gapi.auth2.init({
+                client_id: '{{ data.client_id }}',
+                scope: 'profile email'
+            });
+
+            $("#signinButton").click(function () {
+                console.log("clicked");
+                auth2.grantOfflineAccess({
+                    'redirect_uri': 'postmessage'
+                }).then(offlineAccess);
+            });
+
+            // Replace google button text to be a bit less
+            // confusing to the user.
+            setTimeout(function () {
+                var elems = document.getElementsByTagName('span');
+                for (var e of elems) {
+                    if (e.innerText == 'Signed in with Google') {
+                        e.innerText = 'Sign in with Google';
+                    }
+                }
+
+                // Hide the login button in the header section.
+                var hdr_login_btn = document.getElementById('hdr_login_btn');
+                hdr_login_btn.style = "display:none;";
+
+            }, 250);
+        });
+    }
+
+    function offlineAccess(resp) {
+        console.log("in offline access");
+        var auth_code = resp.code;
+        console.log(resp);
+
+        $.ajax({
+            type: "POST",
+            url: "/oauth/google", // {{url_for('login')}}",
+            processData: false,
+            contentType: 'application/octet-stream; charset=utf-8',
+            data: auth_code,
+            success: function (result) {
+                $("body").html(result);
+                setTimeout(function () {
+                    window.location.href = '/'
+                }, 1000);
+            }
+        });
+    }
+
+    function signOut() {
+        auth2.signOut().then(
+            function () {
+                console.log('signOut called');
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{url_for('logout')}}",
+                    processData: false,
+                    contentType: 'application/octet-stream; charset=utf-8',
+                    success: function (result) {
+                        $("body").html(result);
+                        setTimeout(function () {
+                            window.location.href = '/'
+                        }, 3000);
+                    }
+                });
+            }
+        )
+    }
+
+</script>
+
+<!--END GOOGLE SIGN IN CODE -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=init"></script>
+
+</html>
