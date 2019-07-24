@@ -15,24 +15,25 @@ secret_key = ''.join(random.choice(string.ascii_uppercase + string.digits)
 
 import os
 
-# SQLite database path
-if os.sys.platform == 'linux2':
-    db_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
-    # db_root = '/var/local/'
-    if not os.path.exists(db_root):
-        os.makedirs(db_root)
-else:
-    db_root = os.path.dirname(os.path.abspath(__file__))
+# # SQLite database path
+# if os.sys.platform == 'linux2':
+#     db_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
+#     # db_root = '/var/local/'
+#     if not os.path.exists(db_root):
+#         os.makedirs(db_root)
+# else:
+#     db_root = os.path.dirname(os.path.abspath(__file__))
+#
+# db_path = os.path.join(db_root, 'catalogApp.db')
+#
+# print 'dbpath = ' + db_path
+# DBName = 'sqlite:///' + db_path
+# # SQLite database path
 
-db_path = os.path.join(db_root, 'catalogApp.db')
-
-print 'dbpath = ' + db_path
-DBName = 'sqlite:///' + db_path
-# SQLite database path
-
+DBName = 'postgresql://appuser:apppass@localhost/catalog'
 
 class User(Base):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     username = Column(String(32), index=True)
     picture = Column(String)
