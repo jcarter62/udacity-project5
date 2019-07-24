@@ -43,19 +43,19 @@ Vagrant.configure("2") do |config|
 
     a2enmod wsgi 
 
-    #
-    # postgresql account/password issues:
-    # https://askubuntu.com/questions/1006021/cant-use-my-login-password-for-su-postgres-in-terminal
-    #
-    su postgres -c 'createuser -dRS vagrant'
-    #
-    # the following will prompt for appuser's password.
-    #
-    su postgres -c 'createuser -drsP appuser'
-    #
-    su vagrant -c 'createdb'
-    su vagrant -c 'createdb catalog'
-    su vagrant -c 'psql catalog -f /vagrant/create_tables.sql'
+#    #
+#    # postgresql account/password issues:
+#    # https://askubuntu.com/questions/1006021/cant-use-my-login-password-for-su-postgres-in-terminal
+#    #
+#    su postgres -c 'createuser -dRS vagrant'
+#    #
+#    # the following will prompt for appuser's password.
+#    #
+#    su postgres -c 'createuser -drsP appuser'
+#    #
+#    su vagrant -c 'createdb'
+#    su vagrant -c 'createdb catalog'
+#    su vagrant -c 'psql catalog -f /vagrant/create_tables.sql'
 
     vagrantTip="[35m[1mThe shared directory is located at /vagrant\\nTo access your shared files: cd /vagrant[m"
     echo -e $vagrantTip > /etc/motd

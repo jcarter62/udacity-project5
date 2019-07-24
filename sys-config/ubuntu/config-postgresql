@@ -1,0 +1,9 @@
+#!/bin/bash 
+adminuser=vagrant 
+script=../../create_tables.sql 
+sudo -i -u postgres -c 'createuser -dRS ${adminuser}'
+#sudo -i -u ${adminuser} -c 'createdb'
+#sudo -i -u ${adminuser} -c 'createdb catalog'
+#sudo -i -u ${adminuser} -c 'psql catalog -f ${script}'
+#sudo -i -u ${adminuser} -c 'psql -c "CREATE USER appuser WITH PASSWORD apppass;'
+
