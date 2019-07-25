@@ -1,4 +1,4 @@
-# Project - Item Catalog
+# Project - Linux Server Configuration
 ### Udacity Full Stack Nano Degree - Project #5  
 
 ## About
