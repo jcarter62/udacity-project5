@@ -19,13 +19,14 @@ Some of the technologies used in this application include:
 * Flask 
 * Bootsrap
 * Jinja2
-* SQLite
+* Postgres SQL
 
 ## Prerequisites
 In order to install and execute, download or install the following:
 * [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
 * [Install vagrant](https://www.vagrantup.com/)
 * [Clone this repository](https://github.com/jcarter62/udacity-project5.git)
+* [Amazon Lightsail](https://aws.amazon.com/lightsail/)
 
 ## Installing - Vagrant Environment
 * Clone the repository listed above
@@ -43,6 +44,11 @@ In order to install and execute, download or install the following:
 * clone the repository into a folder owned by user: ubuntu or another.
 * Execute the script found in repository/sys-config/aws/install_script, in order to install required components.
 * Modify apache2 configuration, using examples in repository/sys-config/apache.<br>* Add variable to envvars<br>* Modify 000-default.conf
+* Create database named catalog, along with 3 tables described in the script /repository/create_tables.sql.
+* Create user named: appuser with password: <some password>
+* Update the connection string in repository/models.py with the password above.
+* Grant access for this new user to the tables and related objects.
+* Restart VM 
 
 ## Walkthrough Images
 
