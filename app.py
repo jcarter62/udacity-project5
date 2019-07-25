@@ -586,7 +586,6 @@ def api_items(sortby='', category=''):
 
     users = get_users(session)
 
-
     json_records = [r.serialize for r in recs]
     session.close()
 
