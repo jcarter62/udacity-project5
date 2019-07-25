@@ -4,13 +4,14 @@
 ## About
 This is the second part of a catalog application.  This part required reconfiguration to use postgresql or another client server database, and then publish the application to a cloud server.  I choose publishing on Amazon lightsail hosting service.  
 
+## Server Info
 In order to access this application use the following:
 
-HTTP: Port number 80, IP: 54.201.16.71
-Web url: http://54.201.16.71 or http://jc.is-found.org/
+http://54.201.16.71<br>or<br>http://jc.is-found.org/
 
 SSH: Port number 2200, IP: 54.201.16.71
 
+## About the application
 This project publishes an application catalog containing categories and associated items. The application provides two methods provide authentication.  The first method is through a third-party provider.  The second method is by way of a simple user + password local method.  The third-party authentication used is by way of google.  
 
 Any user can view categories and items; however, to add, modify, or delete, the user must be authenticated.  Also, to modify or delete a category, the user must be the owner/creator of the item.  
