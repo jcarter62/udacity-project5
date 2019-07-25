@@ -1,12 +1,11 @@
 set -x 
 
-# 
-# a2enmod wsgi
-# 
-sudo -i -u postgres "psql --command=\"create role ubuntu;\" "
-
-# --command=COMMAND
 # sudo -u postgres -c 'createdb'
 # sudo -i -u postgres -c 'createdb catalog'
 # # sudo -i -u postgres -c 'psql catalog -f ${script}'
 # sudo -i -u postgres -c 'psql -c "CREATE ROLE appuser WITH PASSWORD \'apppass\';"'
+
+# psql grant commands.
+#catalog=# grant all on users to appuser;
+#catalog=# grant all on item to appuser;
+#catalog=# grant all on category to appuser;
