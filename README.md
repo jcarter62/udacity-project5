@@ -6,8 +6,10 @@ This is the second part of a catalog application.  This part required reconfigur
 
 In order to access this application use the following:
 
-IP: 54.201.16.71
+HTTP: Port number 80, IP: 54.201.16.71
 Web url: http://54.201.16.71 or http://jc.is-found.org/
+
+SSH: Port number 2200, IP: 54.201.16.71
 
 This project publishes an application catalog containing categories and associated items. The application provides two methods provide authentication.  The first method is through a third-party provider.  The second method is by way of a simple user + password local method.  The third-party authentication used is by way of google.  
 
