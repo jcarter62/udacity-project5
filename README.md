@@ -101,6 +101,16 @@ There are 3 main api endpoints available to users.
 - /api/v1/items<br>Returns a list of all items in database.
 - /api/v1/items/**item-id**<br>Returns one item record where item id=**item-id**.
 
+
+## Resources
+- [Flask Information](https://www.tutorialspoint.com/flask/index.htm)
+- [Templates](https://www.tutorialspoint.com/flask/flask_templates.htm)
+- [Bootstrap](https://getbootstrap.com/docs/4.3/content/tables/#contextual-classes)
+- [PyCharm](#pycharm)
+- [Lightsail](https://aws.amazon.com/lightsail/)
+- [Postgres](https://planet.postgresql.org/)
+
+
 ## Authors
 Jim Carter
 
